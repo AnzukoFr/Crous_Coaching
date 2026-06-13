@@ -49,6 +49,7 @@ button, input, textarea, select {
   outline: none;
 }
 
+/* --- GRAIN OVERLAY (gives every page a printed-paper feel) --- */
 body::before {
   content: "";
   position: fixed;
@@ -61,6 +62,7 @@ body::before {
 }
 body.dark::before { mix-blend-mode: screen; opacity: .22; }
 
+/* --- CUSTOM CURSOR (a small red disc tracks the pointer) --- */
 .cursor-dot {
   position: fixed;
   top: 0; left: 0;
@@ -76,6 +78,9 @@ body.dark::before { mix-blend-mode: screen; opacity: .22; }
 .cursor-dot.lg { width: 36px; height: 36px; }
 @media (pointer: coarse) { .cursor-dot { display: none; } }
 
+/* =============================================================
+   TYPOGRAPHY
+   ============================================================= */
 
 .display {
   font-family: var(--ff-display);
@@ -114,6 +119,10 @@ body.dark .eyebrow { color: #8E8779; }
   text-transform: uppercase;
 }
 
+/* =============================================================
+   LAYOUT PRIMITIVES
+   ============================================================= */
+
 .wrap { width: 100%; max-width: var(--measure); margin: 0 auto; padding: 0 var(--gutter); }
 
 .rule    { border-top: 1px solid var(--ink); }
@@ -121,6 +130,9 @@ body.dark .eyebrow { color: #8E8779; }
 .rule--thick { border-top: 4px solid var(--ink); }
 .dark .rule--thick { border-color: var(--paper); }
 
+/* =============================================================
+   NAVIGATION (top bar — like a magazine masthead)
+   ============================================================= */
 
 .masthead {
   border-bottom: 1px solid var(--ink);
@@ -200,6 +212,9 @@ body.dark .nav-cta { background: var(--paper); color: var(--ink); }
   .nav-links { display: none; }
 }
 
+/* =============================================================
+   BUTTONS
+   ============================================================= */
 
 .btn {
   --bg: var(--ink); --fg: var(--paper);
@@ -236,6 +251,9 @@ body.dark .btn--ghost { --fg: var(--paper); border-color: var(--paper); }
 .btn--blood { --bg: var(--blood); --fg: var(--paper); border-color: var(--blood); }
 .btn--blood::before { background: var(--ink); }
 
+/* =============================================================
+   SECTION HEADER (numbered brutalist labels)
+   ============================================================= */
 
 .section-tag {
   display: flex; align-items: baseline; gap: 18px;
@@ -256,6 +274,9 @@ body.dark .btn--ghost { --fg: var(--paper); border-color: var(--paper); }
   text-transform: uppercase;
 }
 
+/* =============================================================
+   MARQUEE
+   ============================================================= */
 
 .marquee {
   border-top: 1px solid currentColor;
@@ -282,6 +303,9 @@ body.dark .btn--ghost { --fg: var(--paper); border-color: var(--paper); }
   to { transform: translateX(-50%); }
 }
 
+/* =============================================================
+   FORM
+   ============================================================= */
 
 .field {
   border-bottom: 1px solid currentColor;
@@ -310,6 +334,9 @@ body.dark .field label { color: #8E8779; }
 .field textarea { resize: vertical; min-height: 80px; }
 .field--active label { color: var(--blood); }
 
+/* =============================================================
+   FOOTER (colophon-style)
+   ============================================================= */
 
 footer.colophon {
   background: var(--ink); color: var(--paper);
@@ -346,6 +373,10 @@ footer.colophon .wrap { padding: 0; }
 @media (max-width: 720px) {
   .colophon__grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* =============================================================
+   CARDS (used on offers + dashboard)
+   ============================================================= */
 
 .card {
   border: 1px solid currentColor;
@@ -392,7 +423,9 @@ footer.colophon .wrap { padding: 0; }
 .card--ink .card__price small,
 .card--blood .card__price small { color: rgba(255,255,255,.55); }
 
-
+/* =============================================================
+   TAGS
+   ============================================================= */
 
 .tag {
   display: inline-flex; align-items: center; gap: 6px;
@@ -406,6 +439,9 @@ footer.colophon .wrap { padding: 0; }
 .tag--blood { background: var(--blood); color: var(--paper); border-color: var(--blood); }
 .tag--ghost { background: transparent; }
 
+/* =============================================================
+   UTILITIES
+   ============================================================= */
 
 .flex { display: flex; }
 .grid { display: grid; }
@@ -419,6 +455,10 @@ footer.colophon .wrap { padding: 0; }
   transition: opacity .9s cubic-bezier(.2,.7,.3,1), transform .9s cubic-bezier(.2,.7,.3,1);
 }
 .reveal.in { opacity: 1; transform: none; }
+
+/* =============================================================
+   DASHBOARD-SPECIFIC
+   ============================================================= */
 
 .shell {
   display: grid;
@@ -490,6 +530,7 @@ footer.colophon .wrap { padding: 0; }
   vertical-align: super; margin-right: 12px;
 }
 
+/* Editor rows for training/diet/protocol */
 .entry-list { display: grid; gap: 0; border-top: 1px solid var(--ink); }
 .entry {
   display: grid;
@@ -531,6 +572,7 @@ footer.colophon .wrap { padding: 0; }
   .entry__del { text-align: left; }
 }
 
+/* Admin client list */
 .client-row {
   display: grid;
   grid-template-columns: 60px 1fr 1fr 1fr auto;
@@ -549,6 +591,7 @@ footer.colophon .wrap { padding: 0; }
 .client-row__meta { font-family: var(--ff-mono); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--stone); }
 .client-row:hover .client-row__meta { color: #8E8779; }
 
+/* Toast */
 .toast {
   position: fixed; bottom: 24px; left: 50%;
   transform: translateX(-50%) translateY(80px);
@@ -561,6 +604,7 @@ footer.colophon .wrap { padding: 0; }
 }
 .toast.in { transform: translateX(-50%) translateY(0); }
 
+/* Modal */
 .modal {
   position: fixed; inset: 0;
   background: rgba(10,9,8,.7);
@@ -581,48 +625,71 @@ footer.colophon .wrap { padding: 0; }
   cursor: pointer;
 }
 
+/* =============================================================
+   ░░ MOBILE / RESPONSIVE OVERHAUL ░░
+   Ajouté pour rendre l'ensemble du site — et surtout l'espace
+   athlète — aussi soigné sur téléphone que sur ordinateur.
+   La plupart des grilles du site sont en styles inline ; on les
+   neutralise ici via des sélecteurs d'attribut + !important.
+   ============================================================= */
 
+/* Filet de sécurité : jamais de scroll horizontal sur mobile */
 html, body { overflow-x: hidden; }
 img, svg, table { max-width: 100%; }
 
-
+/* ---------- TABLETTE (≤ 1024px) -------------------------------
+   Les grilles à 3 ou 4 colonnes passent à 2 colonnes.            */
 @media (max-width: 1024px) {
   [style*="repeat(3"] { grid-template-columns: repeat(2, 1fr) !important; }
   [style*="repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
-
+  /* Les <div></div> vides servant de cale (centrage des cartes)
+     ne gênent pas en 2 colonnes. */
 }
 
-
+/* ---------- TÉLÉPHONE (≤ 768px) -------------------------------
+   Toutes les grilles inline passent en pleine largeur (1 col).   */
 @media (max-width: 768px) {
 
+  /* Effondre TOUTE grille inline multi-colonnes */
   [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
 
+  /* Réduit les très grands écarts inline */
   [style*="gap: 80px"] { gap: 32px !important; }
   [style*="gap: 60px"] { gap: 28px !important; }
   [style*="gap: 48px"] { gap: 24px !important; }
   [style*="gap: 40px"] { gap: 22px !important; }
 
+  /* Réduit les paddings de section verticaux énormes */
   [style*="padding: 120px 0"] { padding-top: 56px !important; padding-bottom: 56px !important; }
   [style*="padding: 100px 0"] { padding-top: 48px !important; padding-bottom: 48px !important; }
   [style*="padding: 80px 0 40px"] { padding: 44px 0 24px !important; }
 
+  /* Titres géants : on borne pour éviter tout débordement */
   [style*="clamp(64px"] { font-size: clamp(40px, 12vw, 66px) !important; }
   [style*="clamp(56px, 9vw"] { font-size: clamp(40px, 12vw, 64px) !important; }
   [style*="clamp(48px, 9vw"] { font-size: clamp(38px, 11vw, 60px) !important; }
   .display, .panel-head h1, blockquote.display { word-break: break-word; }
 
+  /* Marges internes des colonnes (manifeste en 2 colonnes texte) */
   [style*="columns: 2"] { columns: 1 !important; }
 
+  /* CTA / boutons pleine largeur plus confortables au pouce */
   .btn { padding: 16px 22px; }
 
+  /* Pied de page en une colonne */
   .colophon__grid { grid-template-columns: 1fr !important; gap: 28px; }
   .colophon__bottom { gap: 8px; }
 }
 
-
+/* ---------- ESPACE ATHLÈTE / ADMIN (≤ 880px) ------------------
+   La barre latérale devient une barre supérieure compacte,
+   collante, avec une navigation horizontale défilante.           */
 @media (max-width: 880px) {
   .shell { grid-template-columns: 1fr; }
 
+  /* IMPORTANT : sans ceci, la nav horizontale (liens en nowrap) impose
+     sa largeur de contenu au conteneur et déborde. min-width:0 autorise
+     les items de la grille à rétrécir → la nav devient réellement défilante. */
   .shell > * { min-width: 0; }
 
   .shell__side {
@@ -635,8 +702,11 @@ img, svg, table { max-width: 100%; }
     border-bottom: 1px solid var(--blood);
   }
 
+  /* On masque le petit libellé "Espace athlète privé / Console admin"
+     pour gagner de la hauteur en haut d'écran */
   .shell__side > .kicker { display: none; }
 
+  /* Navigation horizontale, défilante au doigt, sans scrollbar visible */
   .side-nav {
     flex-direction: row;
     margin-top: 0;
@@ -646,6 +716,9 @@ img, svg, table { max-width: 100%; }
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding-bottom: 2px;
+    /* Léger fondu à droite : indique visuellement qu'on peut faire défiler */
+    -webkit-mask-image: linear-gradient(to right, #000 90%, transparent 100%);
+            mask-image: linear-gradient(to right, #000 90%, transparent 100%);
   }
   .side-nav::-webkit-scrollbar { display: none; }
   .side-nav a {
@@ -660,6 +733,7 @@ img, svg, table { max-width: 100%; }
     background: rgba(181,39,28,.12);
   }
 
+  /* Bloc utilisateur compact en bas de la barre */
   .shell__user {
     margin-top: 0;
     padding-top: 12px;
@@ -668,6 +742,9 @@ img, svg, table { max-width: 100%; }
   .shell__main { padding: 24px var(--gutter) 56px; }
 }
 
+/* ---------- LIGNES D'ENTRÉE (training / diète / protocole) ----
+   Sur mobile, chaque entrée devient une fiche lisible :
+   [jour] | nom + méta, puis le bouton Supprimer en dessous.      */
 @media (max-width: 768px) {
   .entry {
     grid-template-columns: auto 1fr !important;
@@ -686,6 +763,7 @@ img, svg, table { max-width: 100%; }
     border-top: 1px dashed var(--stone);
   }
 
+  /* Le formulaire d'ajout : champs empilés pleine largeur */
   .entry-form {
     grid-template-columns: 1fr !important;
     gap: 14px;
@@ -696,12 +774,19 @@ img, svg, table { max-width: 100%; }
 
 
 @media (max-width: 768px) {
+  [style*="border-bottom: 1px solid var(--ink); margin-bottom: 32px"] {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  [style*="border-bottom: 1px solid var(--ink); margin-bottom: 32px"]::-webkit-scrollbar { display: none; }
   .ed-tab {
-    padding: 11px 4px !important;
-    font-size: 10px !important;
-    letter-spacing: .04em !important;
-    text-align: center;
-    line-height: 1.25;
+    flex: 0 0 auto !important;
+    padding: 13px 16px !important;
+    font-size: 11px !important;
+    letter-spacing: .08em !important;
+    white-space: nowrap;
+    line-height: 1;
   }
 }
 
@@ -722,6 +807,15 @@ img, svg, table { max-width: 100%; }
   .brand { font-size: 19px; }
 }
 
+
 @media (max-width: 768px) {
-  body.no-toast .toast { display: none !important; }
+  [style*="grid-template-columns: 1fr 1fr 1fr"] > div[style*="border: 1px solid var(--ink); padding: 18px"] {
+    padding: 14px 16px !important;
+  }
+  [style*="grid-template-columns: 1fr 1fr 1fr"] { gap: 12px !important; margin-bottom: 28px !important; }
+
+  .panel-head { margin-bottom: 24px; padding-bottom: 14px; }
+
+  .card { padding: 24px; }
+  .card .stat-num[style*="88px"] { font-size: 66px !important; }
 }
